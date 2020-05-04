@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo danh sách sản phẩm</title>
+    <script src="hoTro.js"></script>
+    <script src="sanpham.js"></script>
+</head>
+<body>
+    <script>
+        /*b1 lưu trữ danh sách sản phẩm xuống local strorage theo key danhSachSanPham*/
+        /*tạo danh sách sản phẩm*/
+        var danhSachSanPham = new Array();
+        var sanPhamLaptop1 = taoRaDoiTuongSanPham("image/lap4.png"
+        ,"Laptop Gaming",500000,15,"Hà Nội");
+        var sanPhamLaptop2 = taoRaDoiTuongSanPham("image/lap5.png"
+        ,"Laptop VivoBook",4500000,20,"Hồ Chí Minh");
+        var sanPhamLaptop3 = taoRaDoiTuongSanPham("image/lap6.png"
+        ,"Laptop ASUS",6000000,25,"Đà Nẵng");
+        var sanPhamLaptop4 = taoRaDoiTuongSanPham("image/lap4.png"
+        ,"Laptop VivoBook",50000000,30,"Hà Nội");
+        
+        for(var i =0; i <5; i++){
+            danhSachSanPham.push(sanPhamLaptop1);
+            danhSachSanPham.push(sanPhamLaptop2);
+            danhSachSanPham.push(sanPhamLaptop3);
+            danhSachSanPham.push(sanPhamLaptop4);
+       }
+
+        /*chuyển danh sách sang json*/
+        var json = JSON.stringify(danhSachSanPham);
+        console.log(json);
+
+        /*lưu trữ xuống local storage*/
+
+        localStorage.setItem('danhSachSanPham', json);
+
+        /*chuyển load danh sach đối tượng từ local storage lên*/
+        var jsonLayTuLocalStorage = localStorage.getItem('danhSachSanPham');
+        /*b1 lấy json từ local storage lên*/
+        var danhSachSanPhamTuLocalStorage = JSON.parse(jsonLayTuLocalStorage);
+        console.log(danhSachSanPhamTuLocalStorage);
+    </script>
+</body>
+</html>
