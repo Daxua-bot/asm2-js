@@ -247,7 +247,7 @@
         <label id="hienThiLoiEmail" for="email" class="error"></label>
 
         <label for="ngaySinh">Ngày Sinh</label>
-        <input type="text" id="ngaySinh">
+        <input type="date" id="ngaySinh">
         <label id="hienThiLoiNgaySinh" for="ngaySinh" class="error"></label>
 
         <label for="thoiGianNhanHang">Thời gian nhận hàng trong 8-18h</label>
@@ -323,25 +323,25 @@
                 nodeHienThiLoiEmail.innerHTML = '';
                 nodeHienThiLoiThoiGianNhanHang.innerHTML = '';
                 nodeHienThiLoiNgaySinh.innerHTML = '';
-                
-                if (hoTen == null || hoTen.length <=0 ) {
-                    nodeHienThiLoiHoTen.innerHTML = 'Họ tên không được để trống !';
+                 
+                if (hoTen == null || hoTen.length <=0 || hoTen.match("^[0-9]*$") ) {
+                    nodeHienThiLoiHoTen.innerHTML = 'Họ tên không được để trống và không được ghi số !';
                     hopLe = false;
                 }
-                if (soDienThoai == null || soDienThoai.length <=0 || soDienThoai.length >10){
+                if (soDienThoai == null || soDienThoai.length < 10 || soDienThoai.length > 11){
                     nodeHienThiLoiSoDienThoai.innerHTML = "Số điện thoại không được để trống và không quá 10 số !";
                     hopLe = false;
                 }
                 if (ngaySinh == null || ngaySinh.length <=0 ){
-                    nodeHienThiLoiNgaySinh.innerHTML = "Vui lòng nhập đúng ngày/Tháng/Năm !";
+                    nodeHienThiLoiNgaySinh.innerHTML = "Vui lòng nhập đúng Ngày/Tháng/Năm !";
                     hopLe = false;
                 }
                 if (thoiGianNhanHang == null || thoiGianNhanHang.length <=0 || thoiGianNhanHang <8 || thoiGianNhanHang > 18){
                     nodeHienThiLoiThoiGianNhanHang.innerHTML = "Vui lòng nhập thời gian nhận hàng trong khoảng 8-18h !";
                     hopLe = false;
                 }
-                if (email == null || email.length <=0 ) {
-                    nodeHienThiLoiEmail.innerHTML = 'Email không được để trống !';
+                if (email == null || email.length <=0 || !email.match("^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$")) {
+                    nodeHienThiLoiEmail.innerHTML = 'Email bạn vừa nhập không hợp lệ ! (Ví dụ:tre16122001@gmail.com)';
                     hopLe = false;
                 }
                 return hopLe;
